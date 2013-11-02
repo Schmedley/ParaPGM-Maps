@@ -1,0 +1,85 @@
+<?xml version="1.0"?>
+<map proto="1.0.0">
+<name>Hot Dam</name>
+<version>1.1.1</version>
+<objective>Leak lava from the enemy's obsidian core onto the dam.</objective>
+<authors>
+    <author>Nadastorm</author>
+</authors>
+<contributors>
+    <contributor contribution="spawn">Plastix</contributor>
+    <contributor>Project Ares Map Team</contributor>
+</contributors>
+<rules>
+    <rule>No entering opposing team's spawn</rule>
+    <rule>No camping the spawn/dance floor</rule>
+    <rule>No building in the void</rule>
+    <rule>No damaging your own core</rule>
+</rules>
+<timelock>on</timelock>
+<teams>
+    <team color="dark red" max="50">Red Team</team>
+    <team color="blue" max="50">Blue Team</team>
+</teams>
+<filters>
+    <filter name="only-blue" parents="deny-all">
+        <allow><team>blue</team></allow>
+    </filter>
+    <filter name="only-red" parents="deny-all">
+        <allow><team>red</team></allow>
+    </filter>
+</filters>
+<regions>
+    <union name="playable">
+        <intersect> <!-- quarter circle near spawn -->
+            <circle center="-114.5,-136.5" radius="96.6"/>
+            <rectangle min="-115,-137" max="-18,-40"/>
+        </intersect>
+        <rectangle min="-181,-137" max="-114,-40"/> <!-- blue side -->
+        <rectangle min="-115,-203" max="-18,-136"/> <!-- red side -->
+        <circle center="-115.5,-137.5" radius="65.5"/> <!-- forest area -->
+    </union>
+
+    <apply block="deny-all">
+        <negative><region name="playable"/></negative>
+    </apply>
+
+    <apply enter="only-blue" message="You are not allowed in blue's storage room.">
+        <cuboid name="blue-storage-room" min="-167,71,-51
+" max="-143,79,-42"/>
+    </apply>
+
+    <apply enter="only-red" message="You are not allowed in red's storage room.">
+        <cuboid name="red-storage-room" min="-29,71,-189" max="-20,79,-165"/>
+    </apply>
+
+    <apply block="deny-all" message="You may not place or break blocks in the supply rooms.">
+        <region name="blue-storage-room"/>
+        <region name="red-storage-room"/>
+    </apply>
+
+    <apply block="deny-all" message="You may not interfere with the spawn platform.">
+        <cuboid name="blue-spawn-protect" min="-96,73,-59" max="-118,80,-45"/>
+        <cuboid name="blue-spawn-protect2" min="-118,75,-46" max="-128,74,-49"/>
+        <cuboid name="red-spawn-protect" min="-37,73,-118" max="-23,80,-140"/>
+        <cuboid name="red-spawn-protect2" min="-24,75,-140" max="-27,74,-150"/>
+    </apply>
+</regions>
+<kits>
+    <kit name="potion">
+        <potion duration="10" amplifier="4">damage resistance</potion>
+        <potion duration="20" amplifier="1">increase damage</potion>
+    </kit>
+</kits>
+<spawns>
+    <spawns kit="potion">
+        <spawn team="blue" yaw="90"><cylinder base="-101,75,-55" radius="2" height="0"/></spawn>
+        <spawn team="red" yaw="180"><cylinder base="-33,75,-123" radius="2" height="0"/></spawn>
+    </spawns>
+    <default yaw="315"><cylinder base="-33.5,36,-54.5" radius="2" height="0"/></default>
+</spawns>
+<cores material="obsidian" leak="2">
+    <core team="blue"><cuboid min="-153,76,-93" max="-149,82,-88"/></core>
+    <core team="red"><cuboid min="-71,76,-175" max="-66,82,-171"/></core>
+</cores>
+</map>

@@ -1,0 +1,60 @@
+<map proto="1.0.0">
+<name>Spaceship Battles II</name>
+<version>1.1</version>
+<objective>
+Leak lava from the enemy's obsidian core and destroy the enemy's Comm Tower made of redstone or lapis.
+</objective>
+<authors>
+<author>Oversoul96</author>
+<author>Eclipsen</author>
+</authors>
+<rules>
+<rule>Do not blow up your own ship</rule>
+<rule>Do not destroy your own objectives</rule>
+<rule>Do not use water on objectives</rule>
+<rule>Do not block the spawn pool</rule>
+<rule>Do not use buckets on lava</rule>
+<rule>Do not leave the map boundaries</rule>
+</rules>
+<teams>
+<team color="blue" max="50">Blue Team</team>
+<team color="dark red" max="50">Red Team</team>
+</teams>
+<spawns>
+<spawn team="blue" yaw="90">
+<cuboid min="208.5,97,360.5" max="214.5,97,362.5"/>
+</spawn>
+<spawn team="red" yaw="90">
+<cuboid min="208.5,97,193.5" max="214.5,97,195.5"/>
+</spawn>
+<default yaw="270">
+<cylinder base="280,68,275" radius="4" height="0"/>
+</default>
+</spawns>
+<playable>
+<cuboid min="9,-oo,121" max="266,93,429"/>
+</playable>
+<regions>
+<apply block="deny-all" message="You may not cover the spawn pools.">
+<cuboid name="blue-spawn-pool" min="201,17,359" max="206,oo,364"/>
+<cuboid name="red-spawn-pool" min="201,17,192" max="206,oo,197"/>
+</apply>
+</regions>
+<cores material="obsidian" leak="-1">
+<core team="blue">
+<cuboid min="118,20,358" max="127,27,365"/>
+</core>
+<core team="red">
+<cuboid min="118,20,191" max="127,27,198"/>
+</core>
+</cores>
+<destroyables name="Comm Tower">
+<destroyable owner="blue" materials="lapis ore">
+<cuboid min="185,52,360" max="188,60,363"/>
+</destroyable>
+<destroyable owner="red" materials="redstone ore;glowing redstone ore">
+<cuboid min="185,52,193" max="188,60,196"/>
+</destroyable>
+</destroyables>
+<maxbuildheight>61</maxbuildheight>
+</map>

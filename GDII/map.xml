@@ -1,0 +1,150 @@
+<?xml version="1.0"?>
+<map proto="1.3.0">
+<name>Golden Drought II</name>
+<version>1.0</version>
+<objective>Capture the wool and return it to your victory monument.</objective>
+<authors>
+    <author>Reshif</author>
+</authors>
+<contributors>
+    <contributor contribution = "Chief Build Slave">zemphon</contributor>
+    <contributor contribution = "Build Slave">Haxasaurous</contributor>
+    <contributor contribution = "Build Slave">teheggy</contributor>
+    <contributor contribution = "Feedback">BrunoTheMiner</contributor>
+</contributors>
+ 
+<maxbuildheight>32</maxbuildheight>
+ 
+<teams>
+    <team color = "dark red" max = "50">Red Team</team>
+
+    <team color = "blue" max = "50">Blue Team</team>
+</teams>
+ 
+<kits>
+    <kit name="spawn">
+        <item slot="0">iron sword</item>
+        <item slot="1" enchantment="ARROW INFINITE:1">bow</item>
+        <item slot="2" enchantment="DURABILITY:4;DIG SPEED:1">iron pickaxe</item>
+        <item slot="3" amount="64">sandstone</item>
+        <item slot="4" amount="64">sandstone</item>
+        <item slot="5" amount="64" damage="2">wood</item>
+        <item slot="6" amount="64">ladder</item>
+        <item slot="7" amount="3">322</item> <!-- Old Golden Apple -->
+        <item slot="8" amount="32">cooked chicken</item>
+        <item slot="28" amount="1">arrow</item>
+        <item slot="30" amount="64">sandstone</item>
+        <item slot="31" amount="64">sandstone</item>
+        <item slot="32" amount="4">web</item>
+        <item slot="33" amount="64">ladder</item>
+        <item slot="34">bucket</item>
+        <potion duration="5" amplifier="1">heal</potion>
+    </kit>
+</kits>
+ 
+<spawns>
+    <spawn team="blue" kit="spawn" yaw="135"><cylinder base="79.5,25,76.5" radius="1" height="0"/></spawn>
+    <spawn team="red" kit="spawn" yaw="-45"><cylinder base="-76.5,25,-76.5" radius="1" height="0"/></spawn>
+    <default yaw="45"><cylinder base="0.5,40,0.5" radius="3" height="0"/></default>
+</spawns>
+ 
+<filters>
+    <filter name="only-blue" parents="deny-players deny-world">
+        <allow><team>blue</team></allow>
+    </filter>
+    <filter name="only-red" parents="deny-players deny-world">
+        <allow><team>red</team></allow>
+    </filter>
+    <filter name="only-gold" parents="deny-block">
+        <allow><block>goldbrick</block></allow>
+    </filter>
+</filters>
+ 
+<regions>
+    <!-- blue wool room protection (these are the wools blue has to get) -->
+    <union name="blue-wool-rooms">
+        <rectangle name="purple-room" min="-180,-102" max="-165,-87"/>
+        <rectangle name="pink-room" min="-102,-180" max="-87,-165"/>
+    </union>
+    <apply block="only-blue">
+        <region name="blue-wool-rooms"/>
+    </apply>
+    <apply enter="only-blue" message="You may not enter your own wool room!">
+        <region name="blue-wool-rooms"/>
+    </apply>
+     
+    <!-- red wool room protection (these are the wools red has to get) -->
+    <union name="red-wool-rooms">
+        <rectangle name="lime-room" min="166,88" max="181,103"/>
+        <rectangle name="green-room" min="88,166" max="103,181"/>
+    </union>
+    <apply block="only-red">
+        <region name="red-wool-rooms"/>
+    </apply>
+    <apply enter="only-red" message="You may not enter your own wool room!">
+        <region name="red-wool-rooms"/>
+    </apply>
+ 
+<union name="blue-base">
+           <rectangle min="61,61" max="108,108"/>
+    </union>
+    <apply block="only-blue">
+        <region name="blue-base"/>
+    </apply>
+    <apply enter="only-blue" message="You may not enter the enemy base!">
+        <region name="blue-base"/>
+    </apply>
+ 
+<union name="red-base">
+           <rectangle min="-107,-107" max="-60,-60"/>
+    </union>
+    <apply block="only-red">
+        <region name="red-base"/>
+    </apply>
+    <apply enter="only-red" message="You may not enter the enemy base!">
+        <region name="red-base"/>
+    </apply>
+ 
+<union name="gold">
+           <cirlce center="95.5,95.5" radius="40"/>
+           <rectangle min="55,55" max="96,96"/>
+           <cirlce center="-94.5,-94.5" radius="40"/>
+           <rectangle min="-56,-56" max="-95,-95"/>
+    </union>
+    <apply block="only-gold">
+        <region name="gold"/>
+    </apply>
+ 
+    <!-- void protection -->
+    <apply block="deny-all" message="You may not break or place blocks in the void!">
+<negative>
+       <union name="playable">
+    <!-- red side -->
+           <circle center="95.5,95.5" radius="59"/>
+           <rectangle min="154,88" max="181,103"/>
+           <rectangle min="88,154" max="103,181"/>
+    <!-- blue side -->
+           <circle center="-94.5,-94.5" radius="59"/>
+           <rectangle min="-180,-102" max="-153,-87"/>
+           <rectangle min="-102,-180" max="-87,-153"/>
+           <rectangle min="-55,-55" max="56,56"/>
+</union>
+</negative>
+     </apply>
+</regions>
+ 
+<wools>
+    <wool team="red" color="lime">
+        <block location="-62,23,-63"/>
+    </wool>
+    <wool team="red" color="green">
+        <block location="-63,23,-62"/>
+    </wool>
+    <wool team="blue" color="pink">
+        <block location="63,23,62"/>
+    </wool>
+    <wool team="blue" color="purple">
+        <block location="62,23,63"/>
+    </wool>
+</wools>
+</map>

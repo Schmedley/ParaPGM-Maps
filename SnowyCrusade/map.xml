@@ -1,0 +1,257 @@
+<?xml version="1.0"?>
+<map proto="1.3.0">
+	<name>Snowy Crusade</name>
+	<version>1.1.2</version>
+	<objective>Take the enemy's wool located to the left and right side of the enemy's base and place it in your victory monument.</objective>
+	
+	<authors>
+		<author contribution="Original map design, building and touch ups">ParaPenguin</author>
+		<author contribution="Extra suggestions, building and other stuff">TheSecret8</author>
+	</authors>
+	
+	<contributors>
+		<contributor contribution="That up/down part on the straight from spawn to front lines...">Emosnail</contributor>
+		<contributor contribution="Feedback and ideas">ParaPhoenix</contributor>
+	</contributors>
+	
+	<rules>
+		<rule>Only take 1 potion at a time</rule>
+		<rule>No more than 2 potions of the same type in your inventory at once</rule>
+	</rules>
+	
+	<include src="tutorial.xml"/>
+	<tutorial>
+		<stage title="Capture the Wool">
+			<message>
+				<line>§rThis map is a §a§lCapture the Wool §r(CTW) map.</line>
+				<line>The objective is to grab the wool(s) on the other team's side and return it to your base.</line>
+			</message>
+			<teleport>
+				<point yaw="90" pitch="31">0.5,41,0.5</point>
+			</teleport>
+		</stage>
+		
+		<stage title="Purple Team Base">
+			<message>
+				<line>§rThis is the §9Purple Team §rspawn.</line>
+				<line>You start here, wearing your starter items.</line>
+				<line>There are iron resources behind you!</line>
+			</message>
+			<teleport>
+				<point yaw="67.196" pitch="31.807">93.5,17,5.5</point>
+			</teleport>
+		</stage>
+		
+		<stage title="Cyan Wool Rooms">
+			<message>
+				<line>These are §3Purple team§r's wool rooms housing §4red§r and §dpink§r wools.</line>
+				<line>§9Cyan Team §rhas §blight blue§r and §9blue §rwools.</line>
+				<line>Purple Team should defend the wools on their side and make sure that nobody carrying them from the enemy team runs back!</line>
+				<line>There is better gear and some potions in the wool rooms, remember to follow the §c/rules §rwhen taking these.</line>
+			</message>
+			<teleport>
+				<point yaw="90" pitch="90">109.5,23,-81.5</point>
+			</teleport>
+		</stage>
+		
+		<stage title="Victory Monument">
+			<message>
+				<line>This is one of two of §5Purple Team§r's victory monuments.</line>
+				<line>The two colored wools from the §3Cyan Team§r's wool rooms must be placed in the victory monuments for the game to be won.</line>
+				<line>Each wool has a special place to put it on both sides, identified by the sign below.</line>
+			</message>
+			<teleport>
+				<point yaw="0">73.5,15,-7.5</point>
+			</teleport>
+		</stage>
+	</tutorial>
+	
+	<teams>
+		<team color="dark aqua" max="50">Cyan Team</team>
+		<team color="dark purple" max="50">Purple Team</team>
+	</teams>
+	
+	<spawns>
+		<spawn team="dark aqua" yaw="270" kit="spawn"><cylinder base="105.5,11,0.5" radius="2" height="0"/></spawn>
+		<spawn team="dark purple" yaw="90" kit="spawn"><cylinder base="104.5,11,0.5" radius="2" height="0"/></spawn>
+		<default yaw="270"><cylinder base="44.5,8,0.5" radius="4" height="0"/></default>
+	</spawns>
+	
+	<kits>
+		<kit name="spawn">
+			<item slot="0">iron sword</item>
+			<item slot="1" enchantment="arrow infinite:1">bow</item>
+			<item slot="28" amount="64">arrow</item>
+			<item slot="37" amount="64">arrow</item>
+			<item slot="2" enchantment="durability:2">iron pickaxe</item>
+			<item slot="3" amount="64" damage="1">log</item>
+			<item slot="4" amount="64">snow block</item>
+			<item slot="5" amount="64">glass</item>
+			<item slot="6">bucket</item>
+			<item slot="7">golden apple</item>
+			<item slot="8" amount="64">cooked fish</item>
+		</kit>
+	</kits>
+	
+	<filters>
+		<filter name="no-void" parents="allow-all">
+			<deny><void/></deny>
+		</filter>
+	
+		<filter name="only-dark-aqua" parents="deny-players deny-world">
+			<allow><team>dark aqua</team></allow>
+		</filter>
+		
+		<filter name="only-dark-aqua-blocks" parents="deny-players deny-world deny-blocks">
+			<allow><team>dark aqua</team></allow>
+		</filter>
+	
+		<filter name="only-dark-purple" parents="deny-players deny-world">
+			<allow><team>dark purple</team></allow>
+		</filter>
+		
+		<filter name="only-dark-purple-blocks" parents="deny-players deny-world deny-blocks">
+			<allow><team>dark purple</team></allow>
+		</filter>
+		
+		<filter name="deny-icemelt">
+			<not><!-- DENY if world and ice, ALLOW if not world, ABSTAIN if world and not ice -->
+				<all><!-- ALLOW if world, DENY else -->
+					<any>
+						<filter name="allow-world" />
+						<filter name="deny-all" />
+					</any>
+					<block>ice</block><!-- ALLOW if ice, ABSTAIN else -->
+				</all>
+			</not>
+		</filter>
+	</filters>
+	
+	<regions>
+		<!-- ice protection -->
+		<apply block="deny-icemelt" message="You may not edit the void area">
+			<rectangle min="149,-95" max="-149,95"/>
+		</apply>
+		
+		<!-- void protection -->
+		<apply block="no-void" message="You may not edit the void area">
+			<negative>
+				<rectangle min="-17,-16" max="17,16"/>
+			</negative>
+		</apply>
+	
+		<apply block="deny-all" message="You may not modify your spawn">
+			<complement name="dark-aqua-spawn">
+				<cylinder base="105.5,7,0.5" radius="7" height="8"/>
+			</complement>
+			
+			<complement name="dark-purple-spawn">
+				<cylinder base="104.5,7,0.5" radius="7" height="8"/>
+			</complement>
+		</apply>
+	
+		<!-- the wools dark aqua has to get -->
+		<union name="dark-aqua-wool-rooms">
+			<circle name="pink-island" center="109.5,82.5" radius="10"/>
+			<circle name="red-island" center="109.5,-81.5" radius="10"/>
+		</union>
+		
+		<!-- the wools dark purple has to get -->
+		<union name="dark-purple-wool-rooms">
+			<circle name="lightblue-island" center="-108.5,-81.5" radius="10"/>
+			<circle name="blue-island" center="-108.5,82.5" radius="10"/>
+		</union>
+	
+		<!-- the blocks outside of dark aqua's wool rooms -->
+		<complement name="outside-pink">
+			<circle center="109.5,82.5" radius="14"/>
+			<region name="pink-island"/>
+		</complement>
+		
+		<complement name="outside-red">
+			<circle center="109.5,-81.5" radius="14"/>
+			<region name="red-island"/>
+		</complement>
+	
+		<!-- the blocks outside of dark purple's wool rooms -->
+		<complement name="outside-lightblue">
+			<circle center="-108.5,-81.5" radius="14"/>
+			<region name="lightblue-island"/>
+		</complement>
+		
+		<complement name="outside-blue">
+			<circle center="-108.5,82.5" radius="14"/>
+			<region name="blue-island"/>
+		</complement>
+	
+		<!-- wool room rules -->
+		<apply block="only-dark-aqua" use="only-dark-aqua">
+			<region name="dark-aqua-wool-rooms"/>
+		</apply>
+		
+		<apply enter="only-dark-aqua" message="You may not enter your own wool room.">
+			<region name="dark-aqua-wool-rooms"/>
+		</apply>
+		
+		<apply block="only-dark-purple" use="only-dark-purple">
+			<region name="dark-purple-wool-rooms"/>
+		</apply>
+		
+		<apply enter="only-dark-purple" message="You may not enter your own wool room.">
+			<region name="dark-purple-wool-rooms"/>
+		</apply>
+	
+		<!-- no block placement outside for the other teams wool rooms -->
+		<apply block="only-dark-aqua-blocks">
+			<region name="outside-pink"/>
+			<region name="outside-red"/>
+		</apply>
+		
+		<apply block="only-dark-purple-blocks">
+			<region name="outside-lightblue"/>
+			<region name="outside-blue"/>
+		</apply>
+	</regions>
+	
+	<toolrepair>
+		<tool>iron sword</tool>
+		<tool>iron pickaxe</tool>
+		<tool>bow</tool>
+	</toolrepair>
+	
+	<itemremove>
+		<item>log</item>
+		<item>wood</item>
+		<item>bucket</item>
+		<item>cooked fish</item>
+		<item>golden apple</item>
+		<item>glass</item>
+		<item>snow block</item>
+		<item>seeds</item>
+		<item>sugar cane</item>
+		<item>string</item>
+		<item>glowstone dust</item>
+	</itemremove>
+	
+	<maxbuildheight>50</maxbuildheight>
+	
+	<wools>
+		<!-- dark aqua Team wools -->
+		<wool team="dark aqua" color="pink">
+			<block>-73,16,12</block>
+		</wool>
+		
+		<wool team="dark aqua" color="red">
+			<block>-73,16,-12</block>
+		</wool>
+		
+		<!-- dark purple Team wools -->
+		<wool team="dark purple" color="light blue">
+			<block>73,16,-12</block>
+		</wool>
+		
+		<wool team="dark purple" color="blue">
+			<block>73,16,12</block>
+		</wool>
+	</wools>
+</map>

@@ -1,0 +1,85 @@
+<?xml version="1.0"?>
+<map proto="1.3.0">
+<name>Total War</name>
+<version>2.0</version>
+<objective>Leak lava from each of the enemy's obsidian core 3 blocks downwards</objective>
+<authors>
+    <author>Lyzak</author>
+</authors>
+<contributors>
+    <contributor contribution="Map Feedback and Tweaks">Plastix</contributor>
+</contributors>
+<rules>
+    <rule>No spawn killing!</rule>
+    <rule>No team griefing!</rule>
+</rules>
+<teams>
+    <team color="blue" max="50">Blue Team</team>
+    <team color="dark red" max="50">Red Team</team>
+</teams>
+<spawns>
+    <spawn team="blue" kit="spawn" yaw="90"><cuboid min="-773,18,1836" max="-767,18,1840"/></spawn>
+    <spawn team="red" kit="spawn" yaw="90"><cuboid min="-773,18,2121" max="-767,18,2125"/></spawn>
+            
+    <default yaw="270"><cuboid min="-696,25,1976" max="-688,25,1984"/></default>
+</spawns>
+<kits>
+    <kit name="spawn">
+        <item slot="0" damage="-3000">iron sword</item>
+        <item slot="28" amount="1">arrow</item>
+        <item slot="1" damage="-3000" enchantment="durability:3;dig speed:2">iron pickaxe</item>
+        <item slot="2" amount="64" damage="2">wood</item>
+        <item slot="3" amount="24">apple</item>
+        <helmet enchantment="protection explosions:4">iron helmet</helmet>
+        <potion duration="5">heal</potion>
+        <potion duration="10">damage resistance</potion>
+    </kit>
+</kits>
+<itemremove>
+    <item>seeds</item>
+    <item>apple</item>
+    <item>glass bottle</item>
+    <item>wood</item>
+</itemremove>
+<itemrepair>
+    <item>iron sword</item>
+    <item>bow</item>
+    <item>iron pickaxe</item>
+</itemrepair>
+<filters>
+    <filter name="only-blue" parents="deny-players deny-world">
+        <allow><team>blue</team></allow>
+    </filter>
+    <filter name="only-red" parents="deny-players deny-world">
+        <allow><team>red</team></allow>
+    </filter>
+</filters>
+<regions>
+    <apply block="deny-all">
+        <rectangle name="blue-spawn" min="-669,1871" max="-645,1859"/>
+        <rectangle name="red-spawn" min="-645,2087" max="-669,2099"/>
+    </apply>
+    <apply enter="only-blue" message="You may not enter the Blue Team's spawn!">
+        <region name="blue-spawn"/>
+    </apply>
+    <apply enter="only-red" message="You may not enter the Red Team's spawn!">
+        <region name="red-spawn"/>
+    </apply>
+    <apply block="deny-all" message="You may not build outside the playable region!">
+        <negative name="playable-inverse">
+            <rectangle min="-824,1849" max="-727,2112"/>
+    	</negative>
+    </apply>
+</regions>
+<cores material="obsidian" leak="3">
+    <cores team="red">
+        <core name="Rear Core"><cuboid min="-746,51,2074" max="-741,56,2079"/></core>
+        <core name="Front Core"><cuboid min="-812,41,2042" max="-803,50,2051"/></core>
+    </cores>
+    <cores team="blue">
+        <core name="Rear Core"><cuboid min="-810,51,1882" max="-805,56,1887"/></core>
+        <core name="Front Core"><cuboid min="-748,41,1910" max="-739,50,1919"/></core>
+    </cores>
+</cores>
+<maxbuildheight>58</maxbuildheight>
+</map>

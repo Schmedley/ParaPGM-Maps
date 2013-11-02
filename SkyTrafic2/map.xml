@@ -1,0 +1,37 @@
+<map proto="1.0.0">
+    <name>Sky Traffic 2</name>
+    <version>1.0</version>
+    <objective>
+        Leak lava from the enemy's obsidian core in their yellow submarine.
+    </objective>
+    <authors>
+        <author>Reshif</author>
+    </authors>
+    <rules>
+        <rule>No blocking the spawn tunnels</rule>
+        <rule>The lava has to leak out underneath the sub!</rule>
+    </rules>
+    <teams>
+        <team color="dark red" max="50">Red Team</team>
+        <team color="blue" max="50">Blue Team</team>
+    </teams>
+    <playable>
+        <rectangle min="-298,19" max="597,143"/>
+    </playable>
+    <maxbuildheight>215</maxbuildheight>
+    <spawns>
+        <spawn team="red" yaw="90"><point>611,125,70</point></spawn>
+        <spawn team="blue" yaw="-90"><point>283,125,70</point></spawn>
+        <default yaw="180">
+            <cuboid min="443,124,-20" max="452,124,-11"/>
+        </default>
+    </spawns>
+    <cores material="obsidian" leak="3">
+        <core team="red">
+            <cuboid min="549,133,114" max="556,139,119"/>
+        </core>
+        <core team="blue">
+            <cuboid min="339,133,114" max="346,129,119"/>
+        </core>
+    </cores>
+</map>

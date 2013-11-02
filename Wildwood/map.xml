@@ -1,0 +1,86 @@
+<map proto="1.3.0">
+    <name>Wildwood Crevice</name>
+    <version>1.3.2</version>
+    <objective>
+        Be the team with the least amount of deaths after 10 minutes.
+    </objective>
+    <authors>
+        <author>xxjkr7xx</author>
+    </authors>
+    <contributors>
+        <contributor contribution="Minor aesthetics and map design">goman989</contributor>
+        <contributor contribution="First person to notice the Kirby face">XYOENDS</contributor>
+    </contributors>
+    <teams>
+        <team color="blue" max="50">Blue Team</team>
+        <team color="dark red" max="50">Red Team</team>
+    </teams>
+    <filters>
+        <filter name="only-blue" parents="deny-players deny-world">
+            <allow>
+                <team>blue</team>
+            </allow>
+        </filter>
+        <filter name="only-red" parents="deny-players deny-world">
+            <allow>
+                <team>red</team>
+            </allow>
+        </filter>
+    </filters>
+    <regions>
+        <apply block="deny-all">
+            <rectangle name="main-area" min="73,-51" max="-91,53"/>
+        </apply>
+    </regions>
+    <playable>
+        <region name="main-area"/>
+    </playable>
+    <kits>
+        <kit name="spawn">
+            <item slot="0">stone sword</item>
+            <item slot="1" enchantment="arrow infinite:1">bow</item>
+            <item slot="28" amount="1">arrow</item>
+            <item slot="2" amount="32">cooked fish</item>
+            <item slot="3" damage="8258">potion</item>
+            <!-- potion of swiftness 1 -->
+            <item slot="4" amount="2">golden apple</item>
+            <potion duration="5">heal</potion>
+            <potion duration="10">damage resistance</potion>
+        </kit>
+        <kit name="red" parents="spawn">
+            <chestplate color="cd0000" damage="-3000">leather chestplate</chestplate>
+            <helmet color="cd0000" damage="-3000">leather helmet</helmet>
+            <leggings damage="-3000">iron leggings</leggings>
+            <boots color="cd0000" damage="-3000" enchantment="protection fall:4">leather boots</boots>
+        </kit>
+        <kit name="blue" parents="spawn">
+            <chestplate color="0066cc" damage="-3000">leather chestplate</chestplate>
+            <helmet color="0066cc" damage="-3000">leather helmet</helmet>
+            <leggings damage="-3000">iron leggings</leggings>
+            <boots color="0066cc" damage="-3000" enchantment="protection fall:4">leather boots</boots>
+        </kit>
+    </kits>
+    <spawns>
+        <spawn team="blue" kit="blue" yaw="270"><cuboid name="mid-spawn-blue" min="-108,14,-2" max="-105,14,1"/></spawn>
+        <spawn team="red" kit="red" yaw="90"><cuboid name="mid-spawn-red" min="90,14,1" max="87,14,-2"/></spawn>
+        <default yaw="90">
+            <cuboid min="-8,45,1" max="-10,45,3"/>
+        </default>
+    </spawns>
+    <score>
+        <time>600</time>
+    </score>
+    <toolrepair>
+        <tool>stone sword</tool>
+        <tool>bow</tool>
+    </toolrepair>
+    <itemremove>
+        <item>leather helmet</item>
+        <item>leather chestplate</item>
+        <item>iron leggings</item>
+        <item>leather boots</item>
+        <item>arrow</item>
+        <item>cooked fish</item>
+        <item>glass bottle</item>
+    </itemremove>
+</map>
