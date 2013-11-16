@@ -1,0 +1,120 @@
+<?xml version="1.0"?>
+<map proto="1.3.0">
+<name>Cherryland</name>
+        <version>1.1</version>
+        <objective>Destroy the enemy team's cores to win!</objective>
+        <authors>
+                <author contribution="Map Building and Cores">TheMasterCow</author>
+                <author contribution="World Editing and Islands">spongebobtime2</author>
+        </authors>
+        <contributors>
+                <contributor contribution="Blocks Filling">thenewplayer11</contributor>
+                <contributor contribution="Running a MapDev Server">ravi60</contributor>
+                <contributor contribution="Map Fixing and XML">pigdevil2010</contributor>
+        </contributors>
+        <teams>
+                <team color="yellow" max="25">Yellow Team</team>
+                <team color="blue" max="25">Blue Team</team>
+        </teams>
+        <kits>
+                <kit name="spawn">
+                        <item slot="0">stone sword</item>
+                        <item slot="1" enchantment="arrow infinite:1">bow</item>
+                        <item slot="2">diamond pickaxe</item>
+                        <item slot="3">iron spade</item>
+                        <item slot="4" amount="64">log</item>
+                        <item slot="5" amount="32">glass</item>
+                        <item slot="6">iron ingot</item>
+                        <item slot="7" amount="2">golden apple</item>
+                        <item slot="8" amount="64">golden carrot</item>
+                        <item slot="28">arrow</item>
+                        <helmet color="ffffff">leather helmet</helmet>
+                        <leggings color="ffffff">leather leggings</leggings>
+                        <boots color="ffffff">leather boots</boots>
+                       
+                </kit>
+                <kit name="yellow" parents="spawn">
+                        <chestplate     color="e5e533">leather chestplate</chestplate>
+                </kit>
+                <kit name="blue" parents="spawn">
+                        <chestplate     color="334cb2">leather chestplate</chestplate>
+                </kit>
+        </kits>
+        <filters>
+                <filter name="only-yellow" parents="deny-players">
+                        <allow><team>yellow</team></allow>
+                </filter>
+                <filter name="only-blue" parents="deny-players">
+                        <allow><team>blue</team></allow>
+                </filter>
+        </filters>
+        <spawns>
+                <spawns kit="spawn">
+                        <spawn team="yellow" yaw="0">
+                                <cuboid min="21,12,-83" max="18,12,-86"/>
+                        </spawn>
+                        <spawn team="blue" yaw="180">                  
+                                <cuboid min="18,12,83" max="21,12,86"/>
+                        </spawn>
+                </spawns>
+                <default yaw="-90">
+                        <cuboid min="-39,52,-2" max="-41,52,2"/>
+                </default>
+        </spawns>
+        <regions>
+                <apply block="deny-all" message="You may not modify the base!">
+                        <cuboid min="28,1,76" max="11,24,93"/>
+                        <cuboid min="11,1,-76" max="28,24,-93"/>
+                </apply>
+                <apply enter="only-blue" message="You may not enter the enemy team's base!">
+                        <cuboid min="28,1,76" max="11,24,93"/>
+                </apply>
+                <apply enter="only-yellow" message="You may not enter the enemy team's base!">
+                        <cuboid min="11,1,-76" max="28,24,-93"/>
+                </apply>
+                <rectangle name="playable" min="-8,-97" max="47,97"/>
+        </regions>
+        <playable>
+                <region name="playable"/>
+        </playable>
+        <cores material="obsidian" leak="3">
+                <cores team="yellow">
+                        <core name="Left Core">
+                                <cuboid min="-5,25,-90" max="0,29,-95"/>
+                        </core>
+                        <core name="Right Core">
+                                <cuboid min="39,29,-90" max="44,22,-95"/>
+                        </core>
+                </cores>
+                <cores team="blue">
+                        <core name="Left Core">
+                                <cuboid min="-5,25,95" max="0,29,90"/>
+                        </core>
+                        <core name="Right Core">
+                                <cuboid min="44,29,95" max="39,25,90"/>
+                        </core>
+                </cores>
+        </cores>
+        <itemremove>
+                <item>stone sword</item>
+                <item>bow</item>
+                <item>diamond pickaxe</item>
+                <item>iron spade</item>
+                <item>log</item>
+                <item>glass</item>
+                <item>iron ingot</item>
+                <item>golden apple</item>
+                <item>golden carrot</item>
+                <item>arrow</item>
+                <item>leather helmet</item>
+                <item>leather leggings</item>
+                <item>leather boots</item>
+                <item>leather chestplate</item>
+        </itemremove>
+        <toolrepair>
+                <tool>stone sword</tool>
+                <tool>bow</tool>
+                <tool>diamond pickaxe</tool>
+                <tool>iron spade</tool>
+        </toolrepair>
+</map>
