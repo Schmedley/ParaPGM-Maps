@@ -1,0 +1,128 @@
+<?xml version="1.0"?>
+<map proto="1.3.0">
+        <name>Torn Canyon</name>
+        <version>1.2</version>
+        <objective>Destroy the enemy team's monument</objective>
+        <authors>
+                <author>PhoenixMatt</author>
+                <author>bleangamer</author>
+                <author>TheMasterCow</author>
+                <author>eyce38</author>
+        </authors>
+        <contributors>
+                <contributor contribution="Filling Up Chests">Jrarizpe</contributor>
+                <contributor contribution="XML">pigdevil2010</contributor>
+        </contributors>
+        <teams>
+                <team color="dark red" max="65">Red Team</team>
+                <team color="blue" max="65">Blue Team</team>
+        </teams>
+        <kits>
+                <kit name="red">
+                        <boots color="993333" enchantment="protection fall:2">leather boots</boots>
+                </kit>
+                <kit name="blue">
+                        <boots color="334cb2" enchantment="protection fall:2">leather boots</boots>
+                </kit>
+        </kits>
+        <filters>
+                <filter name="only-red" parents="deny-players">
+                        <allow><team>red</team></allow>
+                </filter>
+                <filter name="only-blue" parents="deny-players">
+                        <allow><team>blue</team></allow>
+                </filter>
+                <filter name="no-fire" parents="allow-world">
+                        <deny><block>fire</block></deny>
+                </filter>
+        </filters>
+        <spawns>
+                <spawns kit="spawn">
+                        <spawn team="red" yaw="0">
+                                <cylinder base="1261,6,-257" radius="6" height="1"/>
+                        </spawn>
+                        <spawn team="blue" yaw="0">                    
+                                <cylinder base="1210,6,-348" radius="6" height="1"/>
+                        </spawn>
+                </spawns>
+                <default yaw="180">
+                        <cuboid min="1234,157,-304" max="1237,157,-301"/>
+                </default>
+        </spawns>
+        <regions>
+                <union name="red-spawn">
+                        <cuboid min="1251,23,-270" max="1271,5,-248"/>
+                        <cuboid min="1239,24,-243" max="1251,5,-262"/>
+                        <cuboid min="1271,22,-262" max="1278,25,-248"/>
+                </union>
+                <union name="blue-spawn">
+                        <cuboid min="1220,23,-335" max="1200,5,-357"/>
+                        <cuboid min="1232,24,-362" max="1220,5,-343"/>
+                        <cuboid min="1200,22,-343" max="1194,25,-357"/>
+                </union>
+                <apply block="deny-all" message="You may not modify the base!">
+                        <region name="red-spawn"/>
+                        <region name="blue-spawn"/>
+                </apply>
+                <apply enter="only-blue" message="You may not enter the enemy team's base!">
+                        <region name="blue-spawn"/>
+                </apply>
+                <apply enter="only-red" message="You may not enter the enemy team's base!">
+                        <region name="red-spawn"/>
+                </apply>
+                <apply block="no-fire">
+                        <rectangle name="playable" min="1354,-164" max="1117,-441"/>
+                </apply>
+        </regions>
+        <portals>
+                <portal x="@1253.5" y="@68" z="@-240.5" yaw="@180">
+                        <cuboid min="1262,6,-248" max="1260,8,-249"/>
+                </portal>
+                <portal x="@1217.5" y="@68" z="@-364.5" yaw="@0">
+                        <cuboid min="1209,6,-357" max="1211,8,-356"/>
+                </portal>
+        </portals>
+        <playable>
+                <region name="playable"/>
+        </playable>
+        <destroyables name="Center Monument" materials="obsidian" completion="100%">
+                <destroyable owner="blue">
+                        <cuboid min="1218,70,-349" max="1217,67,-350"/>
+                </destroyable>
+                <destroyable owner="red">
+                        <cuboid min="1253,70,-256" max="1254,67,-255"/>
+                </destroyable>
+        </destroyables>
+        <destroyables name="Left Monument" materials="obsidian" completion="100%">
+                <destroyable owner="blue">
+                        <cuboid min="1254,106,-372" max="1253,104,-373"/>
+                </destroyable>
+                <destroyable owner="red">
+                        <cuboid min="1217,106,-233" max="1218,104,-232"/>
+                </destroyable>
+        </destroyables>
+        <destroyables name="Right Monument" materials="obsidian" completion="100%">
+                <destroyable owner="blue">
+                        <cuboid min="1163,113,-369" max="1162,111,-370"/>
+                </destroyable>
+                <destroyable owner="red">
+                        <cuboid min="1308,113,-236" max="1309,111,-235"/>
+                </destroyable>
+        </destroyables>
+        <itemremove>
+                <item>sapling</item>
+                <item>iron sword</item>
+                <item>iron pickaxe</item>
+                <item>iron axe</item>
+                <item>bow</item>
+                <item>leather boots</item>
+        </itemremove>
+        <toolrepair>
+                <item>iron sword</item>
+                <item>iron pickaxe</item>
+                <item>iron axe</item>
+                <item>bow</item>
+                <item>leather boots</item>
+        </toolrepair>
+        <maxbuildheight>148</maxbuildheight>
+</map>

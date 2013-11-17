@@ -1,0 +1,87 @@
+<?xml version="1.0"?>
+<map proto="1.3.0">
+    <name>Selenius II</name>
+    <version>1.0</version>
+    <objective>Break both of the enemy team's obsidian monuments before they break yours</objective>
+    <authors>
+        <author>kalikakitty</author>
+    </authors>
+    <contributors>
+        <contributor contribution="Gardener">Draco_Rogue</contributor>
+        <contributor contribution="Tree building">personherson</contributor>
+        <contributor contribution="General derpiness">moo88888888</contributor>
+    </contributors>
+    <teams>
+        <team color="blue" max="16">Blue Team</team>
+        <team color="dark green" max="16">Green Team</team>
+    </teams>
+    <spawns>
+        <spawn team="blue" kit="blue">
+            <point yaw="-180">-48,7,70</point>
+        </spawn>
+        <spawn team="green" kit="green">
+            <point yaw="-0">-48,7,-103</point>
+        </spawn>
+        <default>
+            <point yaw="-90">-119,21,-16</point>
+        </default>
+    </spawns>
+    <kits>
+        <kit name="spawn">
+            <item slot="0">stone sword</item>
+            <item slot="1">bow</item>
+            <item slot="28" amount="64">arrow</item>
+            <item slot="2">diamond pickaxe</item>
+            <item slot="3">stone axe</item>
+            <item slot="4" amount="32">17</item>
+            <item slot="5" amount="64">glass</item>
+            <item slot="6" amount="64">baked potato</item>
+        </kit>
+        <kit name="blue" parents="spawn">
+            <helmet color="006699">298</helmet>
+            <chestplate color="006699">299</chestplate>
+            <leggings color="006699">300</leggings>
+            <boots color="006699">301</boots>
+        </kit>
+        <kit name="green" parents="spawn">
+            <helmet color="339900">298</helmet>
+            <chestplate color="339900">299</chestplate>
+            <leggings color="339900">300</leggings>
+            <boots color="339900">301</boots>
+        </kit>
+    </kits>
+    <include src="tutorial.xml"/>
+    <tutorial>
+        <stage title="Destroy The Monument">
+            <teleport> 
+                <point yaw="-155" pitch="60">-99,17,-69</point>
+            </teleport>
+            <message>
+                <line>The objective of this map is to destroy the other team's monuments.</line>
+                <line>Each team has two identical monuments; one on each side of their base.</line>
+                <line>You are looking at the green right side monument right now.</line>
+            </message>
+        </stage>
+        <stage title="Killreward system"
+            <teleport>
+                <point yaw="-90" pitch="90">-48,75,-16</point>
+            </telport>
+            <message>
+                <line>Each time you kill an enemy, you get one iron ingot and one bottle o' enchanting.</line>
+                <line>You can use these items to craft better armor and enchant them at the middle islands</line>
+            </message>
+        </stage>
+    </tutorial>
+    <regions>
+        <rectangle name="main-area" min="-125,-89" max="26,56"/>
+    </regions>
+    <playable>
+        <region name="playable"/>
+    </playable>
+    <killreward>
+        <item>iron ingot</item>
+        <item>384</item>
+    </killreward>
+    <timelock>on</timelock>
+    <maxbuildheight>40</maxbuildheight>
+</map>

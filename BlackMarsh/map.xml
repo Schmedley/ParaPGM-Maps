@@ -1,0 +1,213 @@
+<?xml version="1.0"?>
+<map proto="1.3.0">
+<name>Black Marsh</name>
+<version>1.0</version>
+<objective>Destroy all of the enemy team's 7 monuments to win!</objective>
+ 
+<authors>
+        <author>Tywnis</author>
+</authors>
+ 
+<contributors>
+        <contributor contribution="XML Coding">ItsMiiOlly</contributor>
+        <contributor contribution="XML Coding">MrTazz4077</contributor>
+</contributors>
+ 
+<rules>
+        <rule>Don't team kill with the TNT!</rule>
+</rules>
+ 
+<teams>
+        <team color="blue" max="40">Toads</team>
+        <team color="green" max="40">Frogs</team>
+</teams>
+ 
+<kits>
+        <kit name="blue">
+                <item slot="0">iron sword</item>
+                <item slot="1" enchantment="punch:2">bow</item>
+                <item slot="2" enchantment="unbreaking:3, knockback:2">shears</item>
+                <item slot="3" amount="4">tnt</item>
+                <item slot="4" amount="8">cobweb</item>
+                <item slot="5" amount="32">blue wool</item>
+                <item slot="6" amount="64">arrow</item>
+                <item slot="7" amount="64">arrow</item>
+                <item slot="8" amount="32">golden apple</item>
+                <potion duration="7" amplifier="1">heal</potion>
+                <potion duration="150000" amplifier="3">jump</potion>
+        </kit>
+ 
+        <kit name="green">
+                <item slot="0">iron sword</item>
+                <item slot="1" enchantment="punch:2">bow</item>
+                <item slot="2" enchantment="unbreaking:3, knockback:2">shears</item>
+                <item slot="3" amount="4">tnt</item>
+                <item slot="4" amount="8">cobweb</item>
+                <item slot="5" amount="32">lime wool</item>
+                <item slot="6" amount="64">arrow</item>
+                <item slot="7" amount="64">arrow</item>
+                <item slot="8" amount="32">golden apple</item>
+                <potion duration="7" amplifier="1">heal</potion>
+                <potion duration="150000" amplifier="3">jump</potion>
+        </kit>
+       
+        <kit name="blue-armor" parents="blue">
+                <helmet color="0066cc">leather helmet</helmet>
+                <chestplate enchantment="blastprotection:3">iron chestplate</chestplate>
+                <leggins color="0066cc">leather leggins</leggins>
+                <boots enchantment="featherfalling:3">iron boots</boots>
+        </kit>
+ 
+        <kit name="green-armor" parents="green">
+                <helmet color="3dbd00">leather helmet</helmet>
+                <chestplate enchantment="blastprotection:3">iron chestplate</chestplate>
+                <leggins color="3dbd00">leather leggins</leggins>
+                <boots enchantment="featherfalling:3">iron boots</boots>
+        </kit>
+</kits>
+ 
+<destroyables name="Sponge A" materials="sponge" completion="100%">
+        <destroyable owner="blue">
+                <cuboid min="1810,24,577" max="1810,23,577"/>
+        </destroyable>
+ 
+<destroyables name="Sponge B" materials="sponge" completion="100%">
+        <destroyable owner="blue">
+                <cuboid min="1825,18,543" max="1825,17,543"/>
+        </destroyable>
+ 
+<destroyables name="Sponge C" materials="sponge" completion="100%">
+        <destroyable owner="blue">
+                <cuboid min="1825,18,611" max="1825,17,611"/>
+        </destroyable>
+ 
+<destroyables name="Sponge D" materials="sponge" completion="100%">
+        <destroyable owner="blue">
+                <cuboid min="1883,26,519" max="1883,25,519"/>
+        </destroyable>
+ 
+<destroyables name="Sponge E" materials="sponge" completion="100%">
+        <destroyable owner="blue">
+                <cuboid min="1865,28,567" max="1865,27,567"/>
+        </destroyable>
+ 
+<destroyables name="Sponge F" materials="sponge" completion="100%">
+        <destroyable owner="blue">
+                <cuboid min="1865,28,587" max="1865,27,587"/>
+        </destroyable>
+ 
+<destroyables name="Sponge G" materials="sponge" completion="100%">
+        <destroyable owner="blue">
+                <cuboid min="1883,26,635" max="1883,25,635"/>
+        </destroyable>
+</destroyables>
+ 
+<!-- mark -->
+ 
+<destroyables name="Sponge A" materials="sponge" completion="100%">
+        <destroyable owner="green">
+                <cuboid min="1996,24,577" max="1996,23,577"/>
+        </destroyable>
+ 
+<destroyables name="Sponge B" materials="sponge" completion="100%">
+        <destroyable owner="green">
+                <cuboid min="1981,18,611" max="1981,17,611"/>
+        </destroyable>
+ 
+<destroyables name="Sponge C" materials="sponge" completion="100%">
+        <destroyable owner="green">
+                <cuboid min="1981,18,543" max="1981,17,543"/>
+        </destroyable>
+ 
+<destroyables name="Sponge D" materials="sponge" completion="100%">
+        <destroyable owner="green">
+                <cuboid min="1923,26,635" max="1923,25,635"/>
+        </destroyable>
+ 
+<destroyables name="Sponge E" materials="sponge" completion="100%">
+        <destroyable owner="green">
+                <cuboid min="1941,28,587" max="1941,27,587"/>
+        </destroyable>
+ 
+<destroyables name="Sponge F" materials="sponge" completion="100%">
+        <destroyable owner="green">
+                <cuboid min="1941,28,567" max="1941,27,567"/>
+        </destroyable>
+ 
+<destroyables name="Sponge G" materials="sponge" completion="100%">
+        <destroyable owner="green">
+                <cuboid min="1923,26,519" max="1923,25,519"/>
+        </destroyable>
+</destroyables>
+ 
+<filters>
+        <filter name="blocks" parents="deny-all">
+        <allow><block>blue wool</block></allow>
+        <allow><block>lime wool</block></allow>
+        <allow><block>TNT</block></allow>
+        <allow><block>sponge</block></allow>
+        </filter>
+ 
+        <filter name="only-blue" parents="deny-players">
+                <allow><team>blue</team></allow>
+        </filter>
+ 
+        <filter name="only-green" parents="deny-players">
+                <allow><team>green</team></allow>
+        </filter>
+</filters>
+ 
+<regions>
+        <apply block="blocks" message="You may not modify the map.">
+                <cuboid min="-o,-o" max="o,o"/>
+        </apply>
+ 
+        <apply enter="only-blue" message="You may not enter the enemy team's base!">
+                <circle center="1769,577" radius="10"/>
+        </apply>
+ 
+        <apply enter="only-green" message="You may not enter the enemy team's base!">
+                <circle center="2037,577" radius="10"/>
+        </apply>
+</regions>
+ 
+<spawns>
+        <spawn team="green" kit="green" yaw="90">
+                <cuboid min="2034,32,579" max="2040,32,575"/>
+        </spawn>
+       
+        <spawn team="blue" kit="blue" yaw="90">
+                <cuboid min="1771,32,580" max="1767,32,574"/>
+        </spawn>
+ 
+        <default yaw="0">
+                <cuboid min="1903,86,487" max="1907,86,491"/>
+        </default>
+</spawns>
+ 
+<timelock>on</timelock>
+ 
+<maxbuildheight>70</maxbuildheight>
+ 
+<toolrepair>
+        <tool>iron sword</tool>
+        <tool>bow</tool>
+</toolrepair>
+ 
+<itemremove>
+        <item>shears</item>
+        <item>golden apple</item>
+        <item>leather helmet</item>
+        <item>iron chestplate</item>
+        <item>leather leggins</item>
+        <item>iron boots</item>
+</itemremove>
+ 
+<disabledamage>
+    <damage>fall</damage>
+</disabledamage>
+ 
+<instantignite>on</instantignite>
+<blockdamage>off</blockdamage>
+ 
+</map>
