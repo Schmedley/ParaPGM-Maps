@@ -72,7 +72,7 @@
 	</teams>
 	
 	<spawns>
-		<spawn team="dark aqua" yaw="270" kit="spawn"><cylinder base="105.5,11,0.5" radius="2" height="0"/></spawn>
+		<spawn team="dark aqua" yaw="-90" kit="spawn"><cylinder base="105.5,11,0.5" radius="2" height="0"/></spawn>
 		<spawn team="dark purple" yaw="90" kit="spawn"><cylinder base="104.5,11,0.5" radius="2" height="0"/></spawn>
 		<default yaw="270"><cylinder base="44.5,8,0.5" radius="4" height="0"/></default>
 	</spawns>
