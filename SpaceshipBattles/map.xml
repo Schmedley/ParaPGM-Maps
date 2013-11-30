@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<map proto="1.0.0">
+<name>Spaceship Battles</name>
+<version>1.0</version>
+<objective>Leak lava from the enemy's obsidian core.</objective>
+<authors>
+    <author>Oversoul96</author>
+</authors>
+<timelock>on</timelock>
+<rules>
+    <rule>Dispensers are disabled</rule>
+</rules>
+<teams>
+    <team color="dark red" max="24">Red Team</team>
+    <team color="blue" max="24">Blue Team</team>
+</teams>
+<filters>
+    <filter name="deny-dispenser">
+        <deny><block>dispenser</block></deny>
+    </filter>
+</filters>
+<regions>
+    <apply block="deny-all" message="You may not place or break blocks in the water drops.">
+        <union>
+            <rectangle min="239,75" max="244,80"/>
+            <rectangle min="239,136" max="244,141"/>
+        </union>
+    </apply>
+    <!-- Playable region -->
+    <cuboid name="play" min="170,-oo,50" max="260,70,170"/>
+    <apply block="deny-all" message="You may not interact with blocks outside the playing field.">
+        <negative>
+            <region name="play"/>
+        </negative>
+    </apply>
+    <apply block-place="deny-dispenser" message="You cannot place dispensers on this map!">
+        <region name="play"/>
+    </apply>
+</regions>
+<maxbuildheight>70</maxbuildheight>
+<spawns>
+    <spawn team="blue" yaw="180"><cuboid min="295.5,72,88.5" max="298.5,72,91.5"/></spawn>
+    <spawn team="red" yaw="0"><cuboid min="295.5,72,124.5" max="298.5,72,127.5"/></spawn>
+    <default yaw="270"><cylinder base="298.5,71,108.5" radius="2" height="0"/></default>
+</spawns>
+<cores material="obsidian" leak="0">
+    <core team="blue"><cuboid min="208,42,76" max="211,48,79"/></core>
+    <core team="red"><cuboid min="208,42,137" max="211,48,140"/></core>
+</cores>
+<destroyables owner="blue" materials="lapis ore">
+    <destroyable name="Antenna A"><cuboid min="226,49,68" max="229,58,71"/></destroyable>
+    <destroyable name="Antenna B"><cuboid min="242,49,68" max="245,58,71"/></destroyable>
+</destroyables>
+<destroyables owner="red" materials="redstone ore;glowing redstone ore">
+    <destroyable name="Antenna A"><cuboid min="226,49,145" max="229,58,148"/></destroyable>
+    <destroyable name="Antenna B"><cuboid min="242,49,145" max="245,58,148"/></destroyable>
+</destroyables>
+<itemremove>
+    <item>obsidian</item>
+</itemremove>
+</map>
